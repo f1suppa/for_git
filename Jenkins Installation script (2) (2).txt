@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#Update the repositories
+sudo apt update -y
+
+#search for all available packages:
+sudo apt search openjdk
+
+#Pick one option and install it:
+sudo apt install openjdk-11-jdk
+
+#Confirm installation:
+sudo apt install openjdk-11-jdk
+
+#checking installation:
+java -version
+
+#Download git and maven
+sudo apt-get install -y git maven
+
+#Download Jenkins Repo
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+#update repository
+sudo apt-get update -y
+
+#Install Jenkins
+sudo apt-get install jenkins
+
+#Start Jenkins
+#Register the Jenkins service with the command:
+sudo systemctl daemon-reload
+
+#You can start the Jenkins service with the command:
+sudo systemctl start jenkins
+
+#You can check the status of the Jenkins service using the command:
+sudo systemctl status jenkins
