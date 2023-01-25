@@ -1,0 +1,31 @@
+pipeline {
+
+   
+    }
+    agent any
+
+    stages {
+
+        stage('build'){
+            steps{
+              sh 'echo first stage'
+            }  
+        }
+        
+        stage('teststage'){
+            steps{
+              sh 'echo 2nd stage'
+            }
+        }
+        stage('deploy'){
+            steps{
+              sh 'echo 3rd stage'
+            }
+        }
+    }
+    post{
+        always{
+            cleanWs()
+        }
+    }
+}
